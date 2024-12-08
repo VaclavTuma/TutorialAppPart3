@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">TutorialAppPart3</string>
+    <string name="app_name">TutorialAppPart3</string> // change of apps name
+    <string-array name="items">
+        <item> Peach </item>
+        <item> Tomato </item>
+        <item> Apple </item>
+    </string-array>
+
+    <string-array name="prices">
+        <item> 1 eur </item>
+        <item> 2 eur </item>
+        <item> 1 eur </item>
+    </string-array>
+
+    <string-array name="descriptions">
+        <item> Europe </item>
+        <item> Karez </item>
+        <item> Karizek </item>
+    </string-array>
+
 </resources>
