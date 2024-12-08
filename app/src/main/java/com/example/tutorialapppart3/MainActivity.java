@@ -2,36 +2,33 @@ package com.example.tutorialapppart3;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView myRecycleView; //class
+    ListView myListView; //class
     String[] items; // string array with items
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-        });
+        });*/
 
         Resources res = getResources(); // creation of res variable
-        myRecycleView = (ListView) findViewById(R.id.myRecycleView);
-        items = res.getStringArray(R.array.items); // look for erray called items
+        myListView = (ListView) findViewById(R.id.myListView);
+        items = res.getStringArray(R.array.items); // look for array called items
 
-
+        myListView.setAdapter(new ArrayAdapter<String>(this, R.layout.my_listview_detail, items));// adapter to merge these two files, String - 3 params (this list, what layout file I want to use, array to manage)
 
     }
 }
