@@ -1,6 +1,7 @@
 package com.example.tutorialapppart3;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Display;
@@ -28,14 +29,21 @@ public class detailActivity extends AppCompatActivity {
         Intent in = getIntent();
         int index = in.getIntExtra("com.example.tutorialapppart3.ITEM_INDEX",-1);// get extra information of the activity which index to display -1 because it expexts default value
 
+
+
+        if(index > -1 ){ // for safety, if index is greater than -1 I have information to passing the info
+            int pic = getImg(index);
+            ImageView img = (ImageView) findViewById(R.id.imageView);
+            scaleImg(img,pic); // take image and scale
+        }
     }
 
     // set the image I want
     private int getImg(int index){ //private methode
         switch(index){
-            case 0: return R.drawable.bestApple; // index 0
+            case 0: return R.drawable.bestapple; // index 0
             case 1: return R.drawable.apple; // index 1
-            case 2: return R.drawable.tomatoe; // index 2
+            case 2: return R.drawable.tomato; // index 2
             default: return -1;
         }
     }
@@ -48,9 +56,18 @@ public class detailActivity extends AppCompatActivity {
         BitmapFactory.decodeResource(getResources(), pic, options); // help that app will not crash
 
         int imgWith = options.outWidth;
-        int screenWidth = screen.getWidth();
+        int screenWidth =  screen.getWidth();
 
 
+
+        if(imgWith > screenWidth){
+            int ratio = Math.round((float)imgWith / (float) screenWidth);
+            options.inSampleSize = ratio;
+        }
+        options.inJustDecodeBounds= false;
+        Bitmap scaledImg = BitmapFactory.decodeResource(getResources(),pic,options);
+
+        img.setImageBitmap(scaledImg);// takei image and set bitmap to scaled image
 
     }
 
