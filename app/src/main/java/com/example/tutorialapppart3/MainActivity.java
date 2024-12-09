@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     ListView myListView; //class
     String[] items; // string array with items
     String[] prices; // string array with prices
-    String[] description; // string array with description
+    String[] descriptions; // string array with description
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
         myListView = (ListView) findViewById(R.id.myListView);
         items = res.getStringArray(R.array.items); // look for array called items
         prices = res.getStringArray(R.array.prices); // look for array called prices
-        description = res.getStringArray(R.array.descriptions); // look for array called descriptions
+        descriptions = res.getStringArray(R.array.descriptions); // look for array called descriptions
         //myListView.setAdapter(new ArrayAdapter<String>(this, R.layout.my_listview_detail, items));// adapter to merge these two files, String - 3 params (this list, what layout file I want to use, array to manage)
 
-
-
+        ItemAdapter itemAdapter = new ItemAdapter(this, items, prices, descriptions); // item adapter I will giv it items, prices, descrition, only referencing
+        myListView.setAdapter(itemAdapter); // where I will use it
     }
 }
