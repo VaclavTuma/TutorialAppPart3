@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 public class ItemAdapter extends BaseAdapter {
 
@@ -38,6 +39,10 @@ public class ItemAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        View v =mInflater.inflate(R.layout.my_listview_detail,null); // variable v
+        TextView nameTextView = (TextView) v.findViewById(R.id.nameTextView);
+        TextView descriptionTextView = (TextView) v.findViewById(R.id.descriptionTextView);
+        TextView priceTextView = (TextView) v.findViewById(R.id.priceTextView);
         return null;
     }
 
