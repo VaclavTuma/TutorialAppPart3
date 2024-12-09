@@ -1,7 +1,10 @@
 package com.example.tutorialapppart3;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,5 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
         ItemAdapter itemAdapter = new ItemAdapter(this, items, prices, descriptions); // item adapter I will giv it items, prices, descrition, only referencing
         myListView.setAdapter(itemAdapter); // where I will use it
+
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent showDetailActivity = new Intent(getApplicationContext(), detailActivity.class);
+                showDetailActivity.putExtra("com.example.tutorialapppart3.ITEM_INDEX", position);// send activity which ID was clicked
+                startActivity(showDetailActivity);
+            }
+        });
+
     }
 }
