@@ -43,6 +43,15 @@ public class ItemAdapter extends BaseAdapter {
         TextView nameTextView = (TextView) v.findViewById(R.id.nameTextView);
         TextView descriptionTextView = (TextView) v.findViewById(R.id.descriptionTextView);
         TextView priceTextView = (TextView) v.findViewById(R.id.priceTextView);
+
+        String name = items[position]; // name of it is items position is current parameter 0-2
+        String desc = description[position];
+        String cost = prices[position];
+
+        // put info to textView
+        nameTextView.setText(name);
+        descriptionTextView.setText(desc);
+        priceTextView.setText(cost);
         return null;
     }
 
