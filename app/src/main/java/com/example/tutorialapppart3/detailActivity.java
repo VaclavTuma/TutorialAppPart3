@@ -42,8 +42,8 @@ public class detailActivity extends AppCompatActivity {
     private int getImg(int index){ //private methode
         switch(index){
             case 0: return R.drawable.bestapple; // index 0
-            case 1: return R.drawable.apple; // index 1
-            case 2: return R.drawable.tomato; // index 2
+            case 1: return R.drawable.tomato; // index 1
+            case 2: return R.drawable.apple; // index 2
             default: return -1;
         }
     }
